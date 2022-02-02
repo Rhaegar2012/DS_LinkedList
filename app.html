@@ -2,7 +2,7 @@
 <html lang="en" class="h-100">
 
 <head>
-    <title>App Name: A coding Project by Jose Tellez</title>
+    <title>How To: Linked List</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -39,7 +39,7 @@
                     <a class="nav-link" href="/code.html">The Code</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" target="_blank" href="#">Git Repo</a>
+                    <a class="nav-link" target="_blank" href="https://github.com/Rhaegar2012/DS_LinkedList">Git Repo</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" target="_blank" href="https://josetellezdev.netlify.app/">About</a>
@@ -51,6 +51,48 @@
 <!--Main Section-->
 <main class="flex-shrink-0">
     <div class="container">
+        <div class="row">
+            <div class="col">
+                <h2 class="mt-2">Linked List Implementation</h2>
+                <p>In this excercise I implement a doubly-linked list, this is a basic and very useful <br>
+                data structure.<br>
+                To use the linked list simply type the data you want to add in the input form and select one of the options to
+                add or delete elements at will <br>
+                <strong> The Append</strong>  Button will add elements at the end of the list<br>  
+                <strong>The Add To</strong>  Button will add the element at a specific position<br>
+                <strong>The Pop</strong> Button will remove the element at the end of the list<br>
+                <strong>The Remove</strong>Button will remove whatever element in the list , if it exists
+                 </p>
+
+            </div>
+            <div class="col">
+                <form class="mt-2">
+                    <div class="row">
+                        <label for="listInput" class="form-label"><strong>List Input</strong></label>
+                        <input id="listInput" type="string" class="form-control" placeholder="Add element">
+                        <div class="d-flex mt-2">
+                            <label for="listIndexInput" class="form-label"><strong>List Position</strong></label>
+                            <input id="listIndexInput" class="form-label" placeholder="Add element">
+                        </div>
+                        <div class="d-flex">
+                            <button type="button" id="appendButton" class="btn btn-dark mt-1 d-flex" onclick="AppendNode()">Append</button>
+                            <button type="button" id="addToButton" class="btn btn-dark mt-1 mx-2 d-flex" onclick="AddNodeTo()">Add To</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+
+                            
+                        </div>
+                        <div class="col">
+
+                        </div>
+                    </div>
+              
+                </form>
+
+            </div>
+        </div>
 
     </div>
 
