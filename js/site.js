@@ -1,46 +1,33 @@
-//Executable functions 
-let linkedLIst=LinkedList();
-function AppendNode()
-{
-    let nodeValue=document.getElementById("listInput").value;
-    newNode=ListNode(nodeValue,null,null);
-    linkedList.Append(newNode);
-    linkedList.TraverseList();
-    DisplayList();
 
+//Classes
+class ListNode{
+    constructor(nodeValue,_prevNode,_nextNode){
+        this.value=nodeValue;
+        this.prevNode=_prevNode;
+        this.nextNode=_nextNode;
+    }
 }
-function AddNodeTo()
-{
-    let nodeValue=document.getElementById("listInput").value;
-    let nodeIndex=document.getElementById("listIndexInput").value; 
-    newNode=ListNode(nodeValue,null,null);
-    linkedList.AddTo(newNode,nodeIndex);
-    linkedList.TraverseList();
-    DisplayList();
-}
-function DisplayList()
-{
-    //TODO;
-}
-//Linked List Class
-var LinkedList={
-    tail:null,
-    head:null,
-    size:0,
-    InitList:function(){
-        tail=ListNode("tail",head,null);
-        head=ListNode("head",null,tail);
-        size=2//List size initializes at 2 to account for tail and head 
-    },
-    Append:function(newNode){
-        temp=this.tail.prevNode;
+class LinkedList{
+    constructor(){
+        this.tail=new ListNode("tail",null,null);
+        this.head=new ListNode("head",null,null);
+        this.head.nextNode=this.tail;
+        this.tail.prevNode=this.head;
+        this.size=2;//List size initializes at 2 to account for tail and head 
+        this.values=[]
+        this.temp=null;
+    }
+    Append(newNode){
+        let temp=this.tail.prevNode;
+        temp.nextNode=newNode;
         this.tail.prevNode=newNode;
         newNode.nextNode=this.tail;
         newNode.prevNode=temp;
+
         this.size+=1;
 
-    },
-    AddTo:function(newNode, nodeIndex){
+    }
+    AddTo(newNode, nodeIndex){
         let listIndexer=0;
         currentNode=this.head;
         if(nodeIndex<this.size)
@@ -65,34 +52,45 @@ var LinkedList={
         }
 
         
-    },
-    Pop:function(){
+    }
+    Pop(){
         //TODO
-    },
-    Remove:function(){
+    }
+    Remove(){
         //TODO
-    },
-    TraverseList:function(){
+    }
+    TraverseList(){
         let listIndexer=0;
-        values=[];
-        currentNode=this.head;
+        let currentNode=this.head;
         while (listIndexer<this.size)
         {
-            values.Push(currentNode.value);
+            this. values.push(currentNode.value);
             currentNode=currentNode.nextNode;
             listIndexer+=1;
         }
     
     }
 }
+
 //Node class
-var ListNode={
-    value:null,
-    prevNode:null,
-    nextNode:null,
-    createNode:function(nodeValue,_prevNode,_nextNode){
-        value=nodeValue;
-        prevNode=_prevNode;
-        nextNode=_nextNode;
-    }
+//Class Instantiation
+let linkedList= new LinkedList();
+//Button Event Functions 
+function AppendNodeEvent()
+{
+    let nodeValue=document.getElementById("listInput").value;
+    newNode= new ListNode(nodeValue,null,null);
+    linkedList.Append(newNode);
+    linkedList.TraverseList();
+    DisplayList();
+
+}
+function AddNodeToEvent()
+{
+    let nodeValue=document.getElementById("listInput").value;
+    let nodeIndex=document.getElementById("listIndexInput").value; 
+    newNode=new ListNode(nodeValue,null,null);
+    linkedList.AddTo(newNode,nodeIndex);
+    linkedList.TraverseList();
+    DisplayList();
 }
