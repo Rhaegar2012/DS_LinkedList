@@ -72,21 +72,24 @@
                         <input id="listInput" type="string" class="form-control" placeholder="Add element">
                         <div class="d-flex mt-2">
                             <label for="listIndexInput" class="form-label"><strong>List Position</strong></label>
-                            <input id="listIndexInput" class="form-label" placeholder="Add element">
                         </div>
-                        <div class="d-flex">
-                            <button type="button" id="appendButton" class="btn btn-dark mt-1 d-flex" onclick="AppendNodeEvent()">Append</button>
-                            <button type="button" id="addToButton" class="btn btn-dark mt-1 mx-2 d-flex" onclick="AddNodeToEvent()">Add To</button>
+                        <div>
+                            <input id="listIndexInput" class="form-control" placeholder="Select Index">
+                            <label for="newValueInput" class="form-label" placeholder="Add Element"></label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col">
-
-                            
+                            <label for="deleteInput" class="form-label"><strong>Element to Remove</strong></label>
+                            <input id="deleteInput"  class="form-control" placeholder="Element">
+                
                         </div>
-                        <div class="col">
-
-                        </div>
+                    </div>
+                    <div class="row">
+                        <button type="button" id="appendButton" class="btn btn-dark mt-1 " onclick="AppendNodeEvent()">Append</button>
+                        <button type="button" id="addToButton" class="btn btn-dark mt-1  " onclick="AddNodeToEvent()">Add To</button>
+                        <button type="button" id="popButton" class="btn btn-dark mt-1" onclick="PopNodeEvent()">Pop</button>
+                        <button type="button" id="popButton" class="btn btn-dark mt-1" onclick="RemoveNodeEvent()">Remove</button>
                     </div>
               
                 </form>

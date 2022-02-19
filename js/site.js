@@ -15,7 +15,6 @@ class LinkedList{
         this.tail.prevNode=this.head;
         this.size=2;//List size initializes at 2 to account for tail and head 
         this.values=[]
-        this.temp=null;
     }
     Append(newNode){
         let temp=this.tail.prevNode;
@@ -29,18 +28,19 @@ class LinkedList{
     }
     AddTo(newNode, nodeIndex){
         let listIndexer=0;
-        currentNode=this.head;
+        let currentNode=this.head;
         if(nodeIndex<this.size)
         {
             while(listIndexer<=this.size)
             {
                 if(nodeIndex=listIndexer)
                 {
-                    temp=currentNode.nextNode;
+                    let temp=currentNode.nextNode;
                     currentNode.nextNode=newNode;
                     newNode.prevNode=currentNode;
                     newNode.nextNode=temp;
                     this.size+=1;
+                    break;
                 }else
                 {
                     currentNode=currentNode.nextNode;
@@ -54,14 +54,37 @@ class LinkedList{
         
     }
     Pop(){
-        //TODO
+        let nodeToPop=this.tail.prevNode;
+        this.tail.prevNode=nodeToPop.prevNode;
+        nodeToPop.nextNode=this.tail;
+        this.size-=1;
+        nodeToPop=null;
     }
-    Remove(){
-        //TODO
+    Remove(value){
+        let currentNode=this.head;
+        let valueFound=false;
+        while(currentNode.value=!value)
+        {
+            currentNode=currentNode.nextNode;
+            if(currentNode.value==value)
+            {
+                valueFound=true;
+            }
+        }
+        if(valueFound)
+        {
+            prevNode=currentNode.prevNode;
+            nextNode=currentNode.nextNode;
+            prevNode.nextNode=nextNode;
+            nextNode.prevNode=prevNode;
+            this.size-=1;
+        }
+        
     }
     TraverseList(){
         let listIndexer=0;
         let currentNode=this.head;
+        this.values=[]
         while (listIndexer<this.size)
         {
             this. values.push(currentNode.value);
@@ -70,6 +93,7 @@ class LinkedList{
         }
     
     }
+
 }
 
 //Node class
@@ -81,7 +105,6 @@ function AppendNodeEvent()
     let nodeValue=document.getElementById("listInput").value;
     newNode= new ListNode(nodeValue,null,null);
     linkedList.Append(newNode);
-    linkedList.TraverseList();
     DisplayList();
 
 }
@@ -91,6 +114,26 @@ function AddNodeToEvent()
     let nodeIndex=document.getElementById("listIndexInput").value; 
     newNode=new ListNode(nodeValue,null,null);
     linkedList.AddTo(newNode,nodeIndex);
-    linkedList.TraverseList();
     DisplayList();
+}
+function PopNodeEvent()
+{
+    linkedList.Pop();
+    DisplayList();
+
+}
+function RemoveNodeEvent()
+{
+    valueToRemove=document.getElementById("deleteInput").value;
+    linkedList.Remove(valueToRemove);
+    DisplayList();
+
+}
+function DisplayList()
+{
+    linkedList.TraverseList();
+    for (let i=0;i<linkedList.size;i++)
+    {
+        console.log(linkedList.values[i]);
+    }
 }
